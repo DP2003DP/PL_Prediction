@@ -1,0 +1,19 @@
+step,description,rows_before,rows_after,rows_removed
+0,raw rows loaded (dtypes enforced),163082,163082,0
+1,drop exact duplicate rows,163082,163072,10
+2,"dedupe on (player_id, date): 0 duplicate groups (0 rows; 0 span >1 fixture_id, 0 span >1 team); rule: keep the row with most minutes, then highest bps, then first in file order; team is kept per row (no merging across teams)",163072,163072,0
+3,"drop rows missing key fields (missing counts: {'date': 0, 'player_id': 0, 'minutes': 0})",163072,163072,0
+4,"fill missing count stats with 0 (filled: {'goals': 0, 'assists': 0, 'threat': 0, 'creativity': 0, 'influence': 0, 'ict_index': 0, 'bps': 0}); xg/xa/starts left missing",163072,163072,0
+4b,"set xg/xa/starts to NaN in gameweeks where every non-null xg and xa is 0 (not yet published): 8491 rows in 2022-23 GW1-6,8-15",163072,163072,0
+5,drop positions ['GK'],163072,144894,18178
+6,drop minutes == 0 (not an appearance),144894,62054,82840
+6b,"eligible = minutes >= 30: rows_after is the eligible count (flag only, nothing dropped; rows_removed = non-eligible appearances kept)",62054,48248,13806
+7,"sort by player_id, date (fixture_id as tie-break)",62054,62054,0
+team,"team_matches: drop incomplete rows, dedupe on (season, fixture_id, team)",4560,4560,0
+summary,2020-21: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.1861; players = 483; team_matches rows = 760,9628,7926,1702
+summary,2021-22: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.1875; players = 495; team_matches rows = 760,9722,7958,1764
+summary,2022-23: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.1874; players = 515; team_matches rows = 760,10575,8091,2484
+summary,2023-24: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.2092; players = 530; team_matches rows = 760,10608,8063,2545
+summary,2024-25: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.1908; players = 518; team_matches rows = 760,10796,8103,2693
+summary,2025-26: appearances -> eligible rows; eligible base rate (goals+assists>=1) = 0.1837; players = 497; team_matches rows = 760,10725,8107,2618
+summary,all seasons: appearances -> eligible rows; eligible base rate = 0.1908,62054,48248,13806

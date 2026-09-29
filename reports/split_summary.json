@@ -1,0 +1,74 @@
+{
+  "train": {
+    "seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24"
+    ],
+    "rows": 32038,
+    "players": 865,
+    "date_min": "2020-09-12T11:30:00+00:00",
+    "date_max": "2024-05-19T15:00:00+00:00",
+    "positives": 6170,
+    "base_rate": 0.192584
+  },
+  "val": {
+    "seasons": [
+      "2024-25"
+    ],
+    "rows": 8103,
+    "players": 460,
+    "date_min": "2024-08-16T19:00:00+00:00",
+    "date_max": "2025-05-25T15:00:00+00:00",
+    "positives": 1546,
+    "base_rate": 0.190794
+  },
+  "test": {
+    "seasons": [
+      "2025-26"
+    ],
+    "rows": 8107,
+    "players": 443,
+    "date_min": "2025-08-15T19:00:00+00:00",
+    "date_max": "2026-05-24T15:00:00+00:00",
+    "positives": 1489,
+    "base_rate": 0.183668
+  },
+  "ignored_rows": 0,
+  "cv_folds": [
+    {
+      "fold": 1,
+      "train_seasons": [
+        "2020-21"
+      ],
+      "val_season": "2021-22",
+      "train_rows": 7926,
+      "val_rows": 7958,
+      "val_base_rate": 0.187484
+    },
+    {
+      "fold": 2,
+      "train_seasons": [
+        "2020-21",
+        "2021-22"
+      ],
+      "val_season": "2022-23",
+      "train_rows": 15884,
+      "val_rows": 8091,
+      "val_base_rate": 0.187369
+    },
+    {
+      "fold": 3,
+      "train_seasons": [
+        "2020-21",
+        "2021-22",
+        "2022-23"
+      ],
+      "val_season": "2023-24",
+      "train_rows": 23975,
+      "val_rows": 8063,
+      "val_base_rate": 0.209227
+    }
+  ]
+}

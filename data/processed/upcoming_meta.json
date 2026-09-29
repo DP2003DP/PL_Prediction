@@ -1,0 +1,29 @@
+{
+  "season": "2026-27",
+  "gameweek": 6,
+  "target_gw": 6,
+  "target_mode": "next_gw",
+  "pending_fixtures": 0,
+  "deadline": "2026-10-10T10:00:00Z",
+  "first_kickoff": "2026-10-10T11:30:00Z",
+  "last_kickoff": "2026-10-12T19:00:00Z",
+  "generated_at": "2026-09-29T02:25:05+00:00",
+  "data_through": "2026-09-20T15:30:00Z",
+  "live_fetched_at": "2026-09-29T02:01:48Z",
+  "n_fixtures": 10,
+  "n_candidates": 432,
+  "n_likely_starters": 208,
+  "model": {
+    "variant": "xgb_unweighted",
+    "trained_at": "2026-09-29T01:28:21+00:00",
+    "threshold": 0.24122455716133118,
+    "train_seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24"
+    ],
+    "val_season": "2024-25",
+    "test_season": "2025-26"
+  }
+}

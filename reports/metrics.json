@@ -1,0 +1,411 @@
+{
+  "test_season": "2025-26",
+  "n_test_rows": 8107,
+  "test_base_rate": 0.183668,
+  "majority_baseline_accuracy": 0.816332,
+  "selected_model": "xgb_unweighted",
+  "xgb_variant": "xgb_unweighted",
+  "threshold": 0.241225,
+  "train_seasons": [
+    "2020-21",
+    "2021-22",
+    "2022-23",
+    "2023-24"
+  ],
+  "val_season": "2024-25",
+  "models": {
+    "majority": {
+      "accuracy": 0.816332,
+      "lift_over_baseline": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "pr_auc": 0.183668,
+      "brier": 0.183668,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          6618,
+          0
+        ],
+        [
+          1489,
+          0
+        ]
+      ],
+      "accuracy_at_0_5": 0.816332,
+      "lift_at_0_5": 0.0
+    },
+    "heuristic": {
+      "accuracy": 0.51289,
+      "lift_over_baseline": -0.303441,
+      "precision": 0.222348,
+      "recall": 0.661518,
+      "f1": 0.332826,
+      "roc_auc": 0.570484,
+      "pr_auc": 0.209255,
+      "brier": 0.48711,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          3173,
+          3445
+        ],
+        [
+          504,
+          985
+        ]
+      ],
+      "accuracy_at_0_5": 0.51289,
+      "lift_at_0_5": -0.303441
+    },
+    "logreg": {
+      "accuracy": 0.691254,
+      "lift_over_baseline": -0.125077,
+      "precision": 0.307224,
+      "recall": 0.542646,
+      "f1": 0.392328,
+      "roc_auc": 0.68444,
+      "pr_auc": 0.307543,
+      "brier": 0.140919,
+      "threshold": 0.200338,
+      "confusion_matrix": [
+        [
+          4796,
+          1822
+        ],
+        [
+          681,
+          808
+        ]
+      ],
+      "accuracy_at_0_5": 0.814728,
+      "lift_at_0_5": -0.001604
+    },
+    "rf": {
+      "accuracy": 0.682003,
+      "lift_over_baseline": -0.134328,
+      "precision": 0.301784,
+      "recall": 0.556749,
+      "f1": 0.391407,
+      "roc_auc": 0.684302,
+      "pr_auc": 0.313761,
+      "brier": 0.140441,
+      "threshold": 0.216178,
+      "confusion_matrix": [
+        [
+          4700,
+          1918
+        ],
+        [
+          660,
+          829
+        ]
+      ],
+      "accuracy_at_0_5": 0.817072,
+      "lift_at_0_5": 0.00074
+    },
+    "xgb_unweighted": {
+      "accuracy": 0.701246,
+      "lift_over_baseline": -0.115086,
+      "precision": 0.311057,
+      "recall": 0.515782,
+      "f1": 0.388075,
+      "roc_auc": 0.688856,
+      "pr_auc": 0.318213,
+      "brier": 0.140176,
+      "threshold": 0.241225,
+      "confusion_matrix": [
+        [
+          4917,
+          1701
+        ],
+        [
+          721,
+          768
+        ]
+      ],
+      "accuracy_at_0_5": 0.815221,
+      "lift_at_0_5": -0.00111
+    }
+  },
+  "by_position": {
+    "FWD": {
+      "n": 911,
+      "base_rate": 0.322722,
+      "majority_baseline_accuracy": 0.677278,
+      "accuracy": 0.431394,
+      "lift_over_baseline": -0.245884,
+      "precision": 0.346154,
+      "recall": 0.857143,
+      "f1": 0.493151,
+      "roc_auc": 0.58886,
+      "pr_auc": 0.39069
+    },
+    "MID": {
+      "n": 3876,
+      "base_rate": 0.223684,
+      "majority_baseline_accuracy": 0.776316,
+      "accuracy": 0.597007,
+      "lift_over_baseline": -0.179309,
+      "precision": 0.297848,
+      "recall": 0.590542,
+      "f1": 0.395978,
+      "roc_auc": 0.635478,
+      "pr_auc": 0.324997
+    },
+    "DEF": {
+      "n": 3320,
+      "base_rate": 0.098795,
+      "majority_baseline_accuracy": 0.901205,
+      "accuracy": 0.896988,
+      "lift_over_baseline": -0.004217,
+      "precision": 0.181818,
+      "recall": 0.012195,
+      "f1": 0.022857,
+      "roc_auc": 0.614814,
+      "pr_auc": 0.146519
+    }
+  },
+  "by_minutes_band": {
+    "30-59": {
+      "n": 1051,
+      "base_rate": 0.080875,
+      "mean_predicted": 0.196411,
+      "pr_auc": 0.173561,
+      "roc_auc": 0.694148
+    },
+    "60-89": {
+      "n": 2401,
+      "base_rate": 0.214494,
+      "mean_predicted": 0.218659,
+      "pr_auc": 0.335143,
+      "roc_auc": 0.669525
+    },
+    "90+": {
+      "n": 4655,
+      "base_rate": 0.190977,
+      "mean_predicted": 0.170929,
+      "pr_auc": 0.347118,
+      "roc_auc": 0.705838
+    }
+  },
+  "top_k": {
+    "k": 20,
+    "n_matchweeks": 38,
+    "pool": "one row per player per matchweek (the fixture with the highest model probability)",
+    "n_rows_deduped": 84,
+    "model_hit_rate": 0.386842,
+    "random_hit_rate": 0.183076,
+    "random_fwd_hit_rate": 0.323558,
+    "prior_rate_ranker_hit_rate": 0.372368,
+    "lift": 2.113012,
+    "lift_vs_random_fwd": 1.195587,
+    "lift_vs_prior_rate_ranker": 1.038869,
+    "lift_definition": "model_hit_rate / comparator hit rate; `lift` is versus random_hit_rate",
+    "prior_rate_ranker": "top k by player_prior_rate, NaN last, ties broken by player_id"
+  },
+  "calibration": {
+    "logreg": {
+      "bin_mean_pred": [
+        0.069266,
+        0.082744,
+        0.095296,
+        0.112462,
+        0.137613,
+        0.164141,
+        0.191989,
+        0.227617,
+        0.277307,
+        0.374977
+      ],
+      "bin_frac_pos": [
+        0.066584,
+        0.083847,
+        0.088889,
+        0.128237,
+        0.134402,
+        0.17037,
+        0.225647,
+        0.265432,
+        0.307028,
+        0.366215
+      ],
+      "bin_count": [
+        811,
+        811,
+        810,
+        811,
+        811,
+        810,
+        811,
+        810,
+        811,
+        811
+      ]
+    },
+    "rf": {
+      "bin_mean_pred": [
+        0.067357,
+        0.080108,
+        0.092669,
+        0.111358,
+        0.138135,
+        0.17049,
+        0.21207,
+        0.269937,
+        0.329508,
+        0.40427
+      ],
+      "bin_frac_pos": [
+        0.064118,
+        0.080148,
+        0.08642,
+        0.140567,
+        0.152898,
+        0.169136,
+        0.204686,
+        0.250617,
+        0.313194,
+        0.374846
+      ],
+      "bin_count": [
+        811,
+        811,
+        810,
+        811,
+        811,
+        810,
+        811,
+        810,
+        811,
+        811
+      ]
+    },
+    "xgb_unweighted": {
+      "bin_mean_pred": [
+        0.056678,
+        0.076132,
+        0.091518,
+        0.109567,
+        0.134118,
+        0.169831,
+        0.21665,
+        0.271174,
+        0.330935,
+        0.42704
+      ],
+      "bin_frac_pos": [
+        0.064118,
+        0.077682,
+        0.093827,
+        0.112207,
+        0.163995,
+        0.176543,
+        0.210851,
+        0.245679,
+        0.307028,
+        0.38471
+      ],
+      "bin_count": [
+        811,
+        811,
+        810,
+        811,
+        811,
+        810,
+        811,
+        810,
+        811,
+        811
+      ]
+    }
+  },
+  "bootstrap": {
+    "method": "cluster bootstrap over test matchweeks (resampled with replacement); percentile intervals",
+    "cluster_unit": "matchweek",
+    "n_clusters": 38,
+    "n_reps": 1000,
+    "seed": 42,
+    "ci_level": 0.95,
+    "models": {
+      "logreg": {
+        "pr_auc": {
+          "estimate": 0.307543,
+          "ci_low": 0.285592,
+          "ci_high": 0.330571
+        },
+        "roc_auc": {
+          "estimate": 0.68444,
+          "ci_low": 0.667712,
+          "ci_high": 0.700667
+        }
+      },
+      "rf": {
+        "pr_auc": {
+          "estimate": 0.313761,
+          "ci_low": 0.293395,
+          "ci_high": 0.334413
+        },
+        "roc_auc": {
+          "estimate": 0.684302,
+          "ci_low": 0.6676,
+          "ci_high": 0.698312
+        }
+      },
+      "xgb_unweighted": {
+        "pr_auc": {
+          "estimate": 0.318213,
+          "ci_low": 0.297522,
+          "ci_high": 0.339491
+        },
+        "roc_auc": {
+          "estimate": 0.688856,
+          "ci_low": 0.672574,
+          "ci_high": 0.702826
+        }
+      }
+    },
+    "paired_differences": {
+      "xgb_unweighted - logreg": {
+        "pr_auc": {
+          "estimate": 0.01067,
+          "ci_low": 0.001442,
+          "ci_high": 0.019918
+        },
+        "roc_auc": {
+          "estimate": 0.004416,
+          "ci_low": -0.001755,
+          "ci_high": 0.010754
+        }
+      },
+      "xgb_unweighted - rf": {
+        "pr_auc": {
+          "estimate": 0.004453,
+          "ci_low": -0.001594,
+          "ci_high": 0.010128
+        },
+        "roc_auc": {
+          "estimate": 0.004554,
+          "ci_low": 0.001213,
+          "ci_high": 0.007879
+        }
+      }
+    },
+    "top_k": {
+      "model": "xgb_unweighted",
+      "model_hit_rate": {
+        "estimate": 0.386842,
+        "ci_low": 0.346053,
+        "ci_high": 0.426349
+      },
+      "lift_vs_random": {
+        "estimate": 2.113012,
+        "ci_low": 1.911339,
+        "ci_high": 2.297531
+      }
+    }
+  },
+  "generated_at": "2026-09-29T01:41:24+00:00"
+}

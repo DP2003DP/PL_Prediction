@@ -1,0 +1,126 @@
+project:
+  name: soccer-analytics
+  random_seed: 42
+
+data:
+  # FBref sits behind a Cloudflare interactive challenge, so the spec's fallback
+  # (official Fantasy Premier League data) is used. See README "Data source".
+  source: fpl_historical
+  base_url: https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data
+  seasons: ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26"]
+  raw_files: [gws/merged_gw.csv, players_raw.csv, teams.csv, fixtures.csv]
+  request_delay_seconds: 4
+  max_retries: 4
+  timeout_seconds: 30
+  user_agent: "soccer-analytics-student-project/0.1 (educational; python-requests)"
+
+upcoming:
+  # In-progress season, fetched from the live FPL API (the GitHub archive lags by weeks).
+  season: "2026-27"
+  api_base: https://fantasy.premierleague.com/api
+  snapshot_max_age_hours: 6
+  exclude_status: [i, s, u, n]   # FPL status: injured, suspended, unavailable, not in squad
+  likely_starter_lookback: 3     # team's last N finished matches
+  likely_starter_min_matches: 2  # ...in which the player played >= min_minutes
+
+cleaning:
+  min_minutes: 30          # design decision A: predict only for players who play >= 30 minutes
+  drop_positions: [GK]
+
+features:
+  windows: [5, 10]
+  p90_min_minutes: 90
+  min_prior_matches: 5
+  target: y
+  id_columns:
+    - player_id
+    - player_name
+    - date
+    - season
+    - matchweek
+    - fixture_id
+    - team
+    - opponent
+    - home_away
+    - position
+    - minutes
+    - goals
+    - assists
+  feature_columns:
+    - goals_roll5
+    - goals_roll10
+    - assists_roll5
+    - assists_roll10
+    - ga_roll5
+    - ga_roll10
+    - minutes_roll5
+    - minutes_roll10
+    - threat_roll5
+    - threat_roll10
+    - creativity_roll5
+    - creativity_roll10
+    - goals_p90_roll5
+    - goals_p90_roll10
+    - assists_p90_roll5
+    - assists_p90_roll10
+    - threat_p90_roll5
+    - threat_p90_roll10
+    - xg_roll5
+    - xg_roll10
+    - xa_roll5
+    - xa_roll10
+    - matches_in_window
+    - prior_matches
+    - days_since_last_match
+    - is_home
+    - pos_DEF
+    - pos_MID
+    - pos_FWD
+    - opp_conceded_roll5
+    - opp_conceded_roll10
+    - player_prior_rate
+  logreg_features:
+    - ga_roll10
+    - goals_p90_roll10
+    - assists_p90_roll10
+    - threat_p90_roll10
+    - minutes_roll5
+    - is_home
+    - pos_MID
+    - pos_FWD
+    - opp_conceded_roll10
+
+split:
+  train_seasons: ["2020-21", "2021-22", "2022-23", "2023-24"]
+  val_season: "2024-25"
+  test_season: "2025-26"
+
+model:
+  xgb_search_iterations: 30
+  early_stopping_rounds: 50
+  threshold_metric: f1
+  top_k: 20
+  calibration_bins: 10
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  clean: data/processed/clean.parquet
+  team_matches: data/processed/team_matches.parquet
+  cleaning_log: data/processed/cleaning_log.csv
+  features: data/processed/features.parquet
+  models_dir: models
+  xgb_model: models/xgb.json
+  rf_model: models/rf.joblib
+  logreg_model: models/logreg.joblib
+  model_selection: models/model_selection.json
+  reports_dir: reports
+  figures_dir: reports/figures
+  metrics: reports/metrics.json
+  validation_metrics: reports/validation_metrics.csv
+  test_predictions: reports/test_predictions.parquet
+  live_dir: data/raw/live
+  current_clean: data/processed/current_season_clean.parquet
+  current_team_matches: data/processed/current_season_team_matches.parquet
+  upcoming: data/processed/upcoming.parquet
+  upcoming_meta: data/processed/upcoming_meta.json
